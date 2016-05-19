@@ -258,10 +258,10 @@ RUN set -x \
 	&& cp runc /usr/local/bin/docker-runc
 
 # Install containerd
-ENV CONTAINERD_COMMIT v0.2.1
+ENV CONTAINERD_COMMIT mdg/v0.2.1
 RUN set -x \
 	&& export GOPATH="$(mktemp -d)" \
-	&& git clone git://github.com/docker/containerd.git "$GOPATH/src/github.com/docker/containerd" \
+	&& git clone git://github.com/meteor/containerd.git "$GOPATH/src/github.com/docker/containerd" \
 	&& cd "$GOPATH/src/github.com/docker/containerd" \
 	&& git checkout -q "$CONTAINERD_COMMIT" \
 	&& make static \
