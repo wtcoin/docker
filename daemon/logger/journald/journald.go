@@ -143,7 +143,8 @@ func (s *journald) Log(msg *logger.Message) error {
 		return journal.Send(string(msg.Line), journal.PriWarning, s.eVars)
 	}
 
-	// If it's actually from the container, apply rate limiting. Note that we don't rate limit stdout a
+	// If it's actually from the container, apply rate limiting. Note that we
+	// don't rate limit stdout and stderr separately from each other.
 	if s.rateLimit != nil {
 		allowed, suppressed := s.rateLimit.Check()
 		if !allowed {
